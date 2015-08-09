@@ -20,7 +20,22 @@
     content: "\f183";
 }
 
+.icon-ticket:before {
+    font-family: "fontawesome";
+    content: "\f145";
+}
+
+.custom-icon {
+  font-size: 64px;
+  color : red;
+}
+
  
+
+ .icon-sort:before {
+    font-family: "fontawesome";
+    content: "\f0dc";
+}
 
 .icon-tv:before {
     font-family: "fontawesome";

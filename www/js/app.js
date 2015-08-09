@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngOpenFB','ServiceWar
             controller: 'LoginController'
   })
  .state('app.single', {
-    url: '/products/:prodId',
+    url: '/products/:id',
     views: {
       'menuContent': {
         templateUrl: 'templates/detail.html',
@@ -62,7 +62,14 @@ angular.module('starter', ['ionic', 'starter.controllers','ngOpenFB','ServiceWar
     }
   })
   
-  
+  .state('app.sr', {
+      url: '/sr',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/srlist.html'
+        }
+      }
+    })
     .state('app.profile', {
       url: '/profile',
       views: {

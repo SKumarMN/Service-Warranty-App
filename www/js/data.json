@@ -100,10 +100,10 @@
     }
   ],
   "products": [
-    {
+     {
       "name": "Samsung Galaxy S6",
       "model": "SM-G920IZDAINS / SM-G920IZDAINU",
-      "serialnumber": "ZDAINS111203272FFSD",
+      
       "category": "Mobile",
       "desc": "Crafted from glass and metal, the Samsung Galaxy S6 is a revolutionary smartphone that comes with a Quad HD Super AMOLED display, 16 MP camera and lightning-fast 64-bit, octa-core processor.",
       "image": "img/s6.jpg",
@@ -112,7 +112,7 @@
     },{
      "name": "Samsung Camera L3",
       "model": "ACHKK1257HYTTWDINS",
-       "serialnumber": "789657HYUI272FFSD",
+      
       "category": "Camera",
       "desc": "Capture a wider view of your world. Featuring a 25mm wide-angle lens and Live Panorama, the ES99 also includes 16.2 megapixels and a bright F2.5 lens for stunning pictures. Recommended to buy brand genuine accessories.",
       "image": "img/cam1.jpg",
@@ -122,7 +122,7 @@
     {
        "name": "Samsung Galaxy S3",
       "model": "SM-J500FZWDINS",
-       "serialnumber": "ZDAINS11121HJT23SD",
+       
       "category": "Mobile",
       "desc": "Whether you want to read e-books or immerse yourself in photos and videos, the Samsung Galaxy J5 with its HD display, fast performance and a superb camera is an ideal choice.",
       "image": "img/s3.jpg",
@@ -139,6 +139,21 @@
        "status" : "Anout To expire"
     },
     {
+      "name": "Samsung Camera V2",
+      "model": "SM-LOGTYJS23 / SM-G920LOLONU",
+      
+      "category": "Mobile",
+      "desc": "Crafted from glass and metal, the Samsung Galaxy S6 is a revolutionary smartphone that comes with a Quad HD Super AMOLED display, 16 MP camera and lightning-fast 64-bit, octa-core processor.",
+      "image": "img/s6.jpg",
+       "orderdate": "12-Jun-2015",
+       "status" : "In waranty"
+    }
+  ],
+  "userproducts": [
+     {
+      "id":"1",
+      "invoice":"1HTSGS5657",
+      "alias":"Sonu Cell",
       "name": "Samsung Galaxy S6",
       "model": "SM-G920IZDAINS / SM-G920IZDAINU",
       "serialnumber": "ZDAINS111203272FFSD",
@@ -146,7 +161,44 @@
       "desc": "Crafted from glass and metal, the Samsung Galaxy S6 is a revolutionary smartphone that comes with a Quad HD Super AMOLED display, 16 MP camera and lightning-fast 64-bit, octa-core processor.",
       "image": "img/s6.jpg",
        "orderdate": "12-Jun-2015",
-       "status" : "In waranty"
+       "status" : "In Warranty"
+    },{
+      "id":"2",
+      "invoice":"1HIUUITSGS5657",
+      "alias":"My Camera",
+     "name": "Samsung Camera L3",
+      "model": "ACHKK1257HYTTWDINS",
+       "serialnumber": "789657HYUI272FFSD",
+      "category": "Camera",
+      "desc": "Capture a wider view of your world. Featuring a 25mm wide-angle lens and Live Panorama, the ES99 also includes 16.2 megapixels and a bright F2.5 lens for stunning pictures. Recommended to buy brand genuine accessories.",
+      "image": "img/cam1.jpg",
+       "orderdate": "5-Aug-2013",
+       "status" : "In Warranty"
+    },
+    {
+       "id":"3",
+      "invoice":"1IOUUITSGS5657",
+      "alias":"My Cell",
+       "name": "Samsung Galaxy S3",
+      "model": "SM-J500FZWDINS",
+       "serialnumber": "ZDAINS11121HJT23SD",
+      "category": "Mobile",
+      "desc": "Whether you want to read e-books or immerse yourself in photos and videos, the Samsung Galaxy J5 with its HD display, fast performance and a superb camera is an ideal choice.",
+      "image": "img/s3.jpg",
+       "orderdate": "10-Jan-2012",
+       "status" : "Expired"
+    },{
+      "id":"4",
+      "invoice":"1IOUPITSGS5657",
+      "alias":"Home TV",
+      "name": "Samsung 22F5100 55 cm (22) LED TV",
+      "model": "SM-HYTTWDINS",
+       "serialnumber": "YUUIS111203272FFSD",
+      "category": "TV",
+      "desc": "Integrated with ConnectShare, Sports mode and Clean View technologies with Dolby sound, this Samsung 22F5100 55.88 cm (22) LED TV delivers rich visuals immersive sound to provide you with the best experience.",
+      "image": "img/stv1.jpg",
+       "orderdate": "5-Feb-2014",
+       "status" : "About To Expire"
     }
   ]
 }

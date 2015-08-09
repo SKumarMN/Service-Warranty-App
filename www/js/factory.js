@@ -39,7 +39,7 @@ angular.module('ServiceWarrantyApp.factory', [])
             return $http.get("js/data.json").then(function(response){
 
               if(products.length==0){
-                products = response.data.products;
+                products = response.data.userproducts;
               }
                 return products;
             });
@@ -49,6 +49,15 @@ angular.module('ServiceWarrantyApp.factory', [])
           if(data){
           products.push(data)
         }
+        },
+        getMasterList: function(){
+        	return $http.get("js/data.json").then(function(response){
+
+             
+               return response.data.products;
+              
+                
+            });
         }
     }
 }])

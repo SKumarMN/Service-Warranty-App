@@ -15,7 +15,7 @@ item-input-inset bar-light">
   <input type="search" ng-model="query" placeholder="Search">
 </label>
 <button 
-class="button button-icon ion-wand"
+class="button button-icon icon-sort"
 ng-click="data.showReorder = !data.showReorder; data.showDelete = false;">
 </button>
 </div>
@@ -30,7 +30,7 @@ on-refresh="doRefresh()">
 show-delete="data.showDelete"
 show-reorder="data.showReorder">
 <ion-item   
-ng-repeat='item in products track by $index'
+ng-repeat='item in userproducts | filter: query' href="#/app/products/{{item.id}}"
 class="item-icon-left item-icon-right 
 item-text-wrap" ng-class={'star':item.star}>
 <i class="icon ion-ipad" ng-if="item.category == 'Mobile' "></i>

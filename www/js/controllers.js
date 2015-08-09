@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngCordova','ngStorage','ngOpenFB'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $state, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -8,6 +8,9 @@ angular.module('starter.controllers', ['ngCordova','ngStorage','ngOpenFB'])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+$scope.logout = function(){
+  $state.go('login')
+}
 
   // Form data for the login modal
   $scope.loginData = {};
@@ -94,6 +97,20 @@ angular.module('starter.controllers', ['ngCordova','ngStorage','ngOpenFB'])
         }
     };
 
+    $scope.share = function() {
+        if($localStorage.hasOwnProperty("accessToken") === true) {
+            $http.post("https://graph.facebook.com/v2.2/me", { params: { access_token: $localStorage.accessToken, message: "I love it", format: "json" }}).then(function(result) {
+               
+            }, function(error) {
+                alert("There was a problem getting your profile.  Check the logs for details.");
+                console.log(error);
+            });
+        } else {
+            alert("Not signed in");
+            $location.path("/login");
+        }
+    };
+
 })
 
 
@@ -102,12 +119,19 @@ angular.module('starter.controllers', ['ngCordova','ngStorage','ngOpenFB'])
 
 
 .controller('ListController', ['$scope', '$http','$state','$rootScope','ProductService','$ionicListDelegate','Loader', function($scope, $http, $state,$rootScope,ProductService,$ionicListDelegate,Loader) {
+  ProductService.getMasterList().then(function(data) {
+    $scope.masterList = data;
+  });
+
   ProductService.GetProducts().then(function(data) {
 
    
-      $scope.products = data
+      $scope.userproducts = data
+      $scope.id = $state.params.id
+     
 
-      console.log($scope.products[0])
+
+     
      
     
 
@@ -134,8 +158,8 @@ angular.module('starter.controllers', ['ngCordova','ngStorage','ngOpenFB'])
 
     $scope.moveItem = function(item,fromIndex,toIndex){
 
-      $scope.products.splice(fromIndex,1);
-      $scope.products.splice(toIndex,0,item);
+      $scope.userproducts.splice(fromIndex,1);
+      $scope.userproducts.splice(toIndex,0,item);
     } ;
 
     $scope.onProductChange = function(){
@@ -148,14 +172,26 @@ angular.module('starter.controllers', ['ngCordova','ngStorage','ngOpenFB'])
 
     } ;
 
+    var randomString = function(length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for(var i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+  }
+
     $scope.addProductToUser = function(){
 
       $scope.data.newProduct.name = $scope.data.selectedProduct.name
       $scope.data.newProduct.model = $scope.data.selectedProduct.model
       $scope.data.newProduct.desc = $scope.data.selectedProduct.desc
-      $scope.data.newProduct.serialnumber = $scope.data.selectedProduct.serialnumber
+     
       $scope.data.newProduct.image = $scope.data.selectedProduct.image
       $scope.data.newProduct.category = $scope.data.selectedProduct.category
+     
+      $scope.data.newProduct.id = randomString(7)
+      console.log($scope.data.newProduct.id)
        ProductService.addProduct($scope.data.newProduct)
       
       $scope.data.newProduct = {"status": "In Warranty"}
@@ -168,7 +204,7 @@ angular.module('starter.controllers', ['ngCordova','ngStorage','ngOpenFB'])
 
 
     $scope.onItemDelete = function(index){
-      $scope.products.splice(index, 1);
+      $scope.userproducts.splice(index, 1);
        $ionicListDelegate.closeOptionButtons();
        Loader.toggleLoadingWithMessage("Product Deleted Succesfully")
     };
@@ -179,11 +215,11 @@ angular.module('starter.controllers', ['ngCordova','ngStorage','ngOpenFB'])
 
     $scope.doRefresh= function(){
       $http.get('js/data.json').success(function(data){
-       if($scope.products.length == 0){
-        $scope.products = data.products; 
-        console.log("1"+ $scope.products.length)
+       if($scope.userproducts.length == 0){
+        $scope.userproducts = data.userproducts; 
+       
       } 
-       console.log( $scope.products.length)
+       
       
       $scope.data.showDelete = false;
       $scope.data.showReorder = false;

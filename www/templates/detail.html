@@ -1,11 +1,52 @@
 <ion-view view-title="More Info">
       <ion-content>
 <ion-list class="list-inset">
-  <ion-item class="item-text-wrap" ng-repeat="item in products | filter: productId  ">
+  <ion-item class="item-text-wrap" ng-repeat="item in userproducts | filter: {id: id}  ">
+   				
+           <div class="list card">
+
+  <div class="item  item-icon-right">
+    <i class="button button-clear icon ion-heart-broken button-assertive" ng-if="item.status == 'Expired'"></i>
+     <i class="button button-clear icon ion-flag button-balanced" ng-if="item.status == 'In Warranty'"></i>
+      <i class="button button-clear icon ion-android-warning button-energized" ng-if="item.status == 'About To Expire'"></i>
+    <h3>{{item.alias}}</h3>
+    <h2>{{item.name}}</h2>
+
+  </div>
+
+  <div class="item item-body">
+    <img  ng-src="{{item.image}}" class="imagesize">
+    <p>
+     <b> Model Number:</b> {{item.model}}
+     </p>
+     <p>
+    <b> Serial Number:</b> {{item.serialnumber}}
+    </p>
+     <p>
+      <b>Invoice:</b> {{item.invoice}}
+    </p>
+     <p>
+      <b>Purchased Date:</b> {{item.orderdate}}
+    </p>
+     <p>
+      {{item.desc}}
+    </p>
    
-            <h2>{{item.name}}</h2>
-            <h3>{{item.reknown}}</h3>
-            <p>{{item.bio }}
+  </div>
+
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="#">
+      <i class="icon icon-ticket custom-icon"></i>
+    <b> 3</b>
+    </a>
+   
+    <a class="tab-item" href="#">
+      <i class="icon ion-share"></i>
+      Share
+    </a>
+  </div>
+
+</div>
            
   </ion-item>
 </ion-list>
