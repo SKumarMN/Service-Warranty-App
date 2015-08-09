@@ -1,0 +1,54 @@
+<ion-view  view-title="My Products">
+
+
+<ion-nav-buttons side="secondary">
+<a class="button button-icon ion-android-add-circle" href="#/app/regproduct"></a>
+
+</ion-nav-buttons>
+
+
+
+<div class="bar bar-subheader 
+item-input-inset bar-light">
+<label class="item-input-wrapper">
+  <i class="icon ion-search placeholder-icon"></i>
+  <input type="search" ng-model="query" placeholder="Search">
+</label>
+<button 
+class="button button-icon ion-wand"
+ng-click="data.showReorder = !data.showReorder; data.showDelete = false;">
+</button>
+</div>
+<ion-content 
+class="has-subheader">
+<ion-refresher
+pulling-text="Pull to refresh..."
+on-refresh="doRefresh()">
+</ion-refresher>
+
+<ion-list 
+show-delete="data.showDelete"
+show-reorder="data.showReorder">
+<ion-item   
+ng-repeat='item in products track by $index'
+class="item-icon-left item-icon-right 
+item-text-wrap" ng-class={'star':item.star}>
+<i class="icon ion-ipad" ng-if="item.category == 'Mobile' "></i>
+<i class="icon icon-tv" ng-if="item.category == 'TV' "></i>
+<i class="icon ion-camera" ng-if="item.category == 'Camera' "></i>
+
+<h3>{{item.name}}</h3>
+<h2>{{item.model}}</h2>
+<p>{{item.desc | limitTo: 100}}
+  {{ item.desc.length > 150 ? '&hellip;' : '' }}</p>
+
+  <button class="button button-clear icon ion-star button-assertive" ng-click="toggleStar(item)" ng-show="item.star"></button>
+  <ion-option-button class="button-dark" ng-click="toggleStar(item)"><i class="icon ion-star"></i> </ion-option-button>
+  <ion-option-button class="button-assertive" ng-click="onItemDelete($index)"><i class="icon ion-android-delete"></i> </ion-option-button>
+  <ion-reorder-button class="ion-navicon"
+  on-reorder="moveItem(item, $fromIndex, $toIndex)">
+</ion-reorder-button>
+</ion-item>
+</ion-list>
+</ion-content>
+</ion-view>
