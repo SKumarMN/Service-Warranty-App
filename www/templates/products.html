@@ -37,8 +37,8 @@ item-text-wrap" ng-class={'star':item.star}>
 <i class="icon icon-tv" ng-if="item.category == 'TV' "></i>
 <i class="icon ion-camera" ng-if="item.category == 'Camera' "></i>
 
-<h3>{{item.name}}</h3>
-<h2>{{item.model}}</h2>
+<h3>{{item.alias}}</h3>
+<h2>{{item.name}} &nbsp;/&nbsp; {{item.serialnumber}}  </h2>
 <p>{{item.desc | limitTo: 100}}
   {{ item.desc.length > 150 ? '&hellip;' : '' }}</p>
 
