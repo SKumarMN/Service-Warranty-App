@@ -22,9 +22,9 @@ angular.module('starter', ['ionic', 'starter.controllers','ngOpenFB','ServiceWar
 
     ngFB.init({appId: '1600281576906225'});
 
-     //if (PushbotsPlugin.isAndroid()) {
-    //    PushbotsPlugin.initializeAndroid('55c70c23177959375e8b456a', '810401006814');
-   // } 
+     if (PushbotsPlugin.isAndroid()) {
+      PushbotsPlugin.initializeAndroid('55c70c23177959375e8b456a', '810401006814');
+    } 
   });
 })
 
@@ -91,5 +91,5 @@ angular.module('starter', ['ionic', 'starter.controllers','ngOpenFB','ServiceWar
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/products');
+  $urlRouterProvider.otherwise('/main');
 });

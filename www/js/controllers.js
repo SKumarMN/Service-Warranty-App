@@ -81,11 +81,11 @@ $scope.logout = function(){
  
 })
 
-.controller("ProfileController", function($scope, $http, $localStorage, $location,$ionicLoading,$timeout) {
+.controller("ProfileController", function($scope, $http, $localStorage, $location,$ionicLoading,$timeout,$cordovaSocialSharing) {
 
     $scope.init = function() {
         if($localStorage.hasOwnProperty("accessToken") === true) {
-            $http.get("https://graph.facebook.com/v2.2/me", { params: { access_token: $localStorage.accessToken, fields: "id,name,gender,location,age_range", format: "json" }}).then(function(result) {
+            $http.get("https://graph.facebook.com/me", { params: { access_token: $localStorage.accessToken, fields: "id,name,gender,location,age_range,picture", format: "json" }}).then(function(result) {
                 $scope.profileData = result.data;
             }, function(error) {
                 alert("There was a problem getting your profile.  Check the logs for details.");
@@ -93,22 +93,12 @@ $scope.logout = function(){
             });
         } else {
             alert("Not signed in");
-            $location.path("/login");
+            $location.path("/main");
         }
     };
 
     $scope.share = function() {
-        if($localStorage.hasOwnProperty("accessToken") === true) {
-            $http.post("https://graph.facebook.com/v2.2/me", { params: { access_token: $localStorage.accessToken, message: "I love it", format: "json" }}).then(function(result) {
-               
-            }, function(error) {
-                alert("There was a problem getting your profile.  Check the logs for details.");
-                console.log(error);
-            });
-        } else {
-            alert("Not signed in");
-            $location.path("/login");
-        }
+       $cordovaSocialSharing.share("Service Warranty App is cool", "SR APP", "", "");
     };
 
 })
